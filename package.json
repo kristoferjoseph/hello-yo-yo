@@ -1,0 +1,29 @@
+{
+  "name": "hello-yo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify ./main.js -o ./bundle.js -p yo-yoify -p [ csjs-extractify -o ./styles.css ]",
+    "watch": "watchify ./main.js -o ./bundle.js -p yo-yoify -p [ csjs-extractify -o ./styles.css ]",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "browserify": "^13.0.1",
+    "csjs": "^1.0.4",
+    "csjs-extractify": "^1.0.0-alpha.0",
+    "csjs-injectify": "^1.0.0",
+    "dom-css": "^2.0.0",
+    "factor-bundle": "^2.5.0",
+    "insert-css": "^0.2.0",
+    "minidux": "^1.0.1",
+    "sheetify": "^5.0.2",
+    "watchify": "^3.7.0",
+    "yo-yo": "^1.2.1"
+  },
+  "devDependencies": {
+    "yo-yoify": "^2.0.2"
+  }
+}
