@@ -1,7 +1,7 @@
 var yo = require('yo-yo')
 var styles = require('./style.csjs')
-var Title = require('./title')
-var Input = require('./input')
+var Title = require('../title')
+var Input = require('../input')
 
 module.exports = function control(state) {
   return yo`
