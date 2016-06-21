@@ -1,5 +1,6 @@
 var yo = require('yo-yo')
-var control = require('./control')
+var styles = require('./style.csjs')
+var control = require('./components/control')
 var state = {
   name: 'You',
   placeholder: 'Enter your name',

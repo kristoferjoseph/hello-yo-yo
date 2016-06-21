@@ -1,8 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var yo = require('yo-yo')
 var styles = require('./style.csjs')
-var Title = require('./title')
-var Input = require('./input')
+var Title = require('../title')
+var Input = require('../input')
 
 module.exports = function control(state) {
   return (function () {
@@ -14,7 +14,19 @@ ac(bel0, ["\n      ",arguments[1],"\n      ",arguments[2],"\n    "])
         }(styles.container,Title(state),Input(state)))
 }
 
-},{"./input":2,"./style.csjs":21,"./title":22,"/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js":20,"yo-yo":17}],2:[function(require,module,exports){
+},{"../input":3,"../title":5,"./style.csjs":2,"/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js":24,"yo-yo":21}],2:[function(require,module,exports){
+var csjs = require('csjs')
+module.exports = csjs`
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #eee;
+    border-radius: 0.5rem;
+  }
+`
+
+},{"csjs":10}],3:[function(require,module,exports){
 var yo = require('yo-yo')
 var styles = require('./style.csjs.js')
 
@@ -30,9 +42,54 @@ bel0.setAttribute("class", arguments[2])
         }(state.placeholder,state.change,styles.input))
 }
 
-},{"./style.csjs.js":21,"/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js":20,"yo-yo":17}],3:[function(require,module,exports){
+},{"./style.csjs.js":4,"/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js":24,"yo-yo":21}],4:[function(require,module,exports){
+var csjs = require('csjs')
+module.exports = csjs`
+  .input {
+    width: 100%;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 1rem;
+  }
+
+  .input:focus {
+    outline: none;
+    border: 1px solid #4242ba;
+    box-shadow: inset 0 0 3px #2828b9;
+  }
+`
+
+},{"csjs":10}],5:[function(require,module,exports){
 var yo = require('yo-yo')
-var control = require('./control')
+var styles = require('./style.csjs.js')
+
+module.exports = function title(state) {
+  return (function () {
+          var ac = require('/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js')
+          var bel0 = document.createElement("h1")
+bel0.setAttribute("class", arguments[0])
+ac(bel0, ["Hello, ",arguments[1]])
+          return bel0
+        }(styles.title,state.name))
+}
+
+},{"./style.csjs.js":6,"/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js":24,"yo-yo":21}],6:[function(require,module,exports){
+var csjs = require('csjs')
+module.exports = csjs`
+  .title {
+    font-family: sans-serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+`
+
+
+},{"csjs":10}],7:[function(require,module,exports){
+var yo = require('yo-yo')
+var styles = require('./style.csjs')
+var control = require('./components/control')
 var state = {
   name: 'You',
   placeholder: 'Enter your name',
@@ -49,17 +106,17 @@ function change(e) {
 
 document.getElementById('root').appendChild(ctrl)
 
-},{"./control":1,"yo-yo":17}],4:[function(require,module,exports){
+},{"./components/control":1,"./style.csjs":25,"yo-yo":21}],8:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/csjs');
 
-},{"./lib/csjs":10}],5:[function(require,module,exports){
+},{"./lib/csjs":14}],9:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/get-css');
 
-},{"./lib/get-css":13}],6:[function(require,module,exports){
+},{"./lib/get-css":17}],10:[function(require,module,exports){
 'use strict';
 
 var csjs = require('./csjs');
@@ -68,7 +125,7 @@ module.exports = csjs;
 module.exports.csjs = csjs;
 module.exports.getCss = require('./get-css');
 
-},{"./csjs":4,"./get-css":5}],7:[function(require,module,exports){
+},{"./csjs":8,"./get-css":9}],11:[function(require,module,exports){
 'use strict';
 
 /**
@@ -90,7 +147,7 @@ module.exports = function encode(integer) {
   return str;
 };
 
-},{}],8:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 var makeComposition = require('./composition').makeComposition;
@@ -134,7 +191,7 @@ function getClassChain(obj) {
   return acc;
 }
 
-},{"./composition":9}],9:[function(require,module,exports){
+},{"./composition":13}],13:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -202,7 +259,7 @@ function isComposition(value) {
  */
 function Composition() {}
 
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 var extractExtends = require('./css-extract-extends');
@@ -282,7 +339,7 @@ function without(obj, unwanted) {
   }, {});
 }
 
-},{"./build-exports":8,"./composition":9,"./css-extract-extends":11,"./css-key":12,"./scopeify":16}],11:[function(require,module,exports){
+},{"./build-exports":12,"./composition":13,"./css-extract-extends":15,"./css-key":16,"./scopeify":20}],15:[function(require,module,exports){
 'use strict';
 
 var makeComposition = require('./composition').makeComposition;
@@ -335,7 +392,7 @@ function getClassName(str) {
   return trimmed[0] === '.' ? trimmed.substr(1) : trimmed;
 }
 
-},{"./composition":9}],12:[function(require,module,exports){
+},{"./composition":13}],16:[function(require,module,exports){
 'use strict';
 
 /**
@@ -345,7 +402,7 @@ function getClassName(str) {
 
 module.exports = ' css ';
 
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 var cssKey = require('./css-key');
@@ -354,7 +411,7 @@ module.exports = function getCss(csjs) {
   return csjs[cssKey];
 };
 
-},{"./css-key":12}],14:[function(require,module,exports){
+},{"./css-key":16}],18:[function(require,module,exports){
 'use strict';
 
 /**
@@ -372,7 +429,7 @@ module.exports = function hashStr(str) {
   return hash >>> 0;
 };
 
-},{}],15:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 var encode = require('./base62-encode');
@@ -386,7 +443,7 @@ module.exports = function fileScoper(fileSrc) {
   }
 };
 
-},{"./base62-encode":7,"./hash-string":14}],16:[function(require,module,exports){
+},{"./base62-encode":11,"./hash-string":18}],20:[function(require,module,exports){
 'use strict';
 
 var fileScoper = require('./scoped-name');
@@ -456,7 +513,7 @@ function replaceAnimations(result) {
   return result;
 }
 
-},{"./scoped-name":15}],17:[function(require,module,exports){
+},{"./scoped-name":19}],21:[function(require,module,exports){
 var bel = {} // turns template tag into DOM elements
 var morphdom = require('morphdom') // efficiently diffs + morphs two DOM elements
 var defaultEvents = require('./update-events.js') // default events to be copied when dom elements update
@@ -492,7 +549,7 @@ module.exports.update = function (fromNode, toNode, opts) {
   }
 }
 
-},{"./update-events.js":19,"morphdom":18}],18:[function(require,module,exports){
+},{"./update-events.js":23,"morphdom":22}],22:[function(require,module,exports){
 // Create a range object for efficently rendering strings to elements.
 var range;
 
@@ -1066,7 +1123,7 @@ function morphdom(fromNode, toNode, options) {
 
 module.exports = morphdom;
 
-},{}],19:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -1104,7 +1161,7 @@ module.exports = [
   'onfocusout'
 ]
 
-},{}],20:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = function yoyoifyAppendChild (el, childs) {
   for (var i = 0; i < childs.length; i++) {
     var node = childs[i]
@@ -1131,9 +1188,8 @@ module.exports = function yoyoifyAppendChild (el, childs) {
   }
 }
 
-},{}],21:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var csjs = require('csjs')
-
 module.exports = csjs`
   *,
   *:before,
@@ -1146,49 +1202,6 @@ module.exports = csjs`
   body {
     padding: 2rem;
   }
-
-  .title {
-    font-family: sans-serif;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  .container {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 2rem;
-    background: #eee;
-    border-radius: 0.5rem;
-  }
-
-  .input {
-    width: 100%;
-    font-weight: 500;
-    font-size: 1rem;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    padding: 1rem;
-  }
-
-  .input:focus {
-    outline: none;
-    border: 1px solid #4242ba;
-    box-shadow: inset 0 0 3px #2828b9;
-  }
 `
 
-},{"csjs":6}],22:[function(require,module,exports){
-var yo = require('yo-yo')
-var styles = require('./style.csjs')
-
-module.exports = function title(state) {
-  return (function () {
-          var ac = require('/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js')
-          var bel0 = document.createElement("h1")
-bel0.setAttribute("class", arguments[0])
-ac(bel0, ["Hello, ",arguments[1]])
-          return bel0
-        }(styles.title,state.name))
-}
-
-},{"./style.csjs":21,"/Users/drainbramage/Documents/work/PROTOTYPES/TCBY/hello-yo/node_modules/yo-yoify/lib/appendChild.js":20,"yo-yo":17}]},{},[3]);
+},{"csjs":10}]},{},[7]);

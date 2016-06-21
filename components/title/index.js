@@ -1,5 +1,5 @@
 var yo = require('yo-yo')
-var styles = require('./style.csjs')
+var styles = require('./style.csjs.js')
 
 module.exports = function title(state) {
   return yo`
